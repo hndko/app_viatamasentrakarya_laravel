@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Backend\CMS;
 
 use App\Http\Controllers\Controller;
-use App\Models\AboutModel;
+use App\Models\SNKModel;
 use Illuminate\Http\Request;
 
-class AboutController extends Controller
+class SNKController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +16,11 @@ class AboutController extends Controller
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
             'master' => null,
-            'pages' => 'Tentang Kami',
-            'res' => AboutModel::first()
+            'pages' => 'Syarat & Ketentuan',
+            'res' => SNKModel::first()
         ];
 
-        return view('backend.cms.about.index', $data);
+        return view('backend.cms.snk.index', $data);
     }
 
     /**
@@ -65,15 +65,15 @@ class AboutController extends Controller
             'deskripsi' => 'required|string',
         ]);
 
-        // Ambil data about dari basis data
-        $about = AboutModel::first();
+        // Ambil data snk dari basis data
+        $snk = SNKModel::first();
 
-        // Perbarui deskripsi about dengan data baru dari formulir
-        $about->deskripsi = $request->deskripsi;
-        $about->save();
+        // Perbarui deskripsi snk dengan data baru dari formulir
+        $snk->deskripsi = $request->deskripsi;
+        $snk->save();
 
         // Alihkan pengguna kembali ke halaman index dengan pesan sukses
-        return redirect()->route('cms.about')->with('success', 'Deskripsi berhasil diperbarui.');
+        return redirect()->route('cms.snk')->with('success', 'Deskripsi berhasil diperbarui.');
     }
 
     /**

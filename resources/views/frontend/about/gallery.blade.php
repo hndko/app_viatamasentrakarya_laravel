@@ -21,10 +21,10 @@
                         <div class="row g-2">
                             @foreach ($images as $image)
                                 <div class="col-xl-4 col-lg-4 col-md-6 portfolio-item d-flex align-content-center">
-                                    <img src="{{ asset('assets/img/gallery/' . basename($image)) }}" class="img-fluid"
+                                    <img src="{{ asset('assets/img/gallery/' . $image->sampul) }}" class="img-fluid"
                                         alt="">
                                     <div class="portfolio-info">
-                                        <a href="{{ asset('assets/img/gallery/' . basename($image)) }}"
+                                        <a href="{{ asset('assets/img/gallery/' . $image->sampul) }}"
                                             data-gallery="portfolio-gallery" class="glightbox preview-link"><i
                                                 class="bi bi-zoom-in"></i></a>
                                     </div>

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\SNKModel;
 use App\Models\AboutModel;
+use App\Models\GalleryModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -25,7 +27,8 @@ class AboutController extends Controller
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
             'pages' => 'Gallery',
-            'images' => File::files(public_path('assets/img/gallery')),
+            // 'images' => File::files(public_path('assets/img/gallery')),
+            'images' => GalleryModel::all(),
         ];
 
         return view('frontend.about.gallery', $data);
@@ -36,6 +39,7 @@ class AboutController extends Controller
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
             'pages' => 'Syarat & Ketentuan',
+            'res' => SNKModel::first()
         ];
 
         return view('frontend.about.syarat_dan_ketentuan', $data);

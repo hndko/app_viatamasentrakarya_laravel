@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Backend\CMS\AboutController as CMSAboutController;
 use App\Http\Controllers\Backend\CMS\DashboardController as CMSDashboardController;
+use App\Http\Controllers\Backend\CMS\GalleryController as CMSGalleryController;
+use App\Http\Controllers\Backend\CMS\Informasi\KBLIController as CMSKBLIController;
 use App\Http\Controllers\Backend\CMS\KlienController as CMSKlienController;
+use App\Http\Controllers\Backend\CMS\SNKController as CMSSNKController;
 use App\Http\Controllers\Frontend\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomeController;
@@ -69,4 +72,17 @@ Route::prefix('cms')->namespace('Backend\CMS')->group(function () {
 
     Route::get('about', [CMSAboutController::class, 'index'])->name('cms.about');
     Route::put('about/update', [CMSAboutController::class, 'update'])->name('cms.about.update');
+
+    Route::get('gallery', [CMSGalleryController::class, 'index'])->name('cms.gallery');
+    Route::get('gallery/create', [CMSGalleryController::class, 'create'])->name('cms.gallery.create');
+    Route::post('gallery', [CMSGalleryController::class, 'store'])->name('cms.gallery.store');
+    Route::get('gallery/{id}/edit', [CMSGalleryController::class, 'edit'])->name('cms.gallery.edit');
+    Route::put('gallery/{id}/update', [CMSGalleryController::class, 'update'])->name('cms.gallery.update');
+    Route::delete('gallery/{id}', [CMSGalleryController::class, 'destroy'])->name('cms.gallery.destroy');
+
+    Route::get('snk', [CMSSNKController::class, 'index'])->name('cms.snk');
+    Route::put('snk/update', [CMSSNKController::class, 'update'])->name('cms.snk.update');
+
+    Route::get('kbli', [CMSKBLIController::class, 'index'])->name('cms.kbli');
+    Route::put('kbli/update', [CMSKBLIController::class, 'update'])->name('cms.kbli.update');
 });

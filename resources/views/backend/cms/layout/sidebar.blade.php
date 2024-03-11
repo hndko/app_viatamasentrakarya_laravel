@@ -34,19 +34,20 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('cms.about') }}" class="nav-link {{ $pages === 'About' ? 'active' : '' }}">
+                    <a href="{{ route('cms.about') }}" class="nav-link {{ $pages === 'Tentang Kami' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-file"></i>
                         <p>About</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('cms.gallery') }}" class="nav-link {{ $pages === 'Gallery' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-image"></i>
                         <p>Gallery</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('cms.snk') }}"
+                        class="nav-link {{ $pages === 'Syarat & Ketentuan' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-clipboard-list"></i>
                         <p>Syarat & Ketentuan</p>
                     </a>
@@ -76,8 +77,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $master === 'Informasi' ? 'show menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ $master === 'Informasi' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-info-circle"></i>
                         <p>
                             Informasi
@@ -86,7 +87,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('cms.kbli') }}"
+                                class="nav-link {{ $pages === 'KBLI Terbaru' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>KBLI</p>
                             </a>

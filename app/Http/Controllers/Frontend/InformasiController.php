@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
+use App\Models\KBLIModel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class InformasiController extends Controller
 {
@@ -11,7 +12,8 @@ class InformasiController extends Controller
     {
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
-            'pages' => 'KBLI Terbaru'
+            'pages' => 'KBLI Terbaru',
+            'res' => KBLIModel::first()
         ];
 
         return view('frontend.informasi.kbli', $data);
