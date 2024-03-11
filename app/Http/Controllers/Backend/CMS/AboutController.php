@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend\CMS;
 
-use App\Models\ClientModel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
+use App\Models\AboutModel;
+use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +15,11 @@ class HomeController extends Controller
     {
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
-            // 'images' => File::files(public_path('assets/img/clients')),
-            'images' => ClientModel::all(), // Mengambil semua data klien dari database
+            'pages' => 'Tentang Kami',
+            'res' => AboutModel::first()
         ];
 
-        return view('frontend.home', $data);
+        return view('backend.cms.about.index', $data);
     }
 
     /**
@@ -58,9 +57,22 @@ class HomeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request)
     {
-        //
+        // Validasi input
+        $request->validate([
+            'deskripsi' => 'required|string',
+        ]);
+
+        // Ambil data about dari basis data
+        $about = AboutModel::first();
+
+        // Perbarui deskripsi about dengan data baru dari formulir
+        $about->deskripsi = $request->deskripsi;
+        $about->save();
+
+        // Alihkan pengguna kembali ke halaman index dengan pesan sukses
+        return redirect()->route('cms.about')->with('success', 'Deskripsi berhasil diperbarui.');
     }
 
     /**
