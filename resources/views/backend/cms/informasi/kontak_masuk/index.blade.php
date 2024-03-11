@@ -24,11 +24,6 @@
                         <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <span class="m-0 h5">Daftar {{ $pages }}</span>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-primary btn-sm"
-                                        onclick="window.location.href='{{ route('cms.klien.create') }}'">Tambah
-                                        Data</button>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <!-- Jika ada pesan sukses, tampilkan -->
@@ -42,8 +37,10 @@
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>Judul</th>
-                                            <th>Sampul</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Email</th>
+                                            <th>Subject</th>
+                                            <th>Messsage</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -51,20 +48,14 @@
                                         @foreach ($result as $res)
                                             <tr>
                                                 <td class="align-middle">{{ $loop->iteration }}</td>
-                                                <td class="align-middle">{{ $res->nama_klien }}</td>
+                                                <td class="align-middle">{{ $res->nama_lengkap }}</td>
+                                                <td class="align-middle">{{ $res->email }}</td>
+                                                <td class="align-middle">{{ $res->subject }}</td>
+                                                <td class="align-middle">{{ $res->message }}</td>
                                                 <td class="align-middle">
-                                                    <img src="{{ asset('assets/img/clients/' . $res->sampul) }}"
-                                                        alt="{{ $res->nama_klien }}" style="max-width: 100px;">
-                                                </td>
-                                                <td class="align-middle">
-                                                    <!-- Tombol untuk mengedit -->
-                                                    <button type="button" class="btn btn-warning btn-sm"
-                                                        onclick="window.location.href='{{ route('cms.klien.edit', $res->client_id) }}'">
-                                                        <i class="fas fa-edit"></i>
-                                                    </button>
-
                                                     <!-- Tombol untuk menghapus -->
-                                                    <form action="{{ route('cms.klien.destroy', $res->client_id) }}"
+                                                    <form
+                                                        action="{{ route('cms.kontak-masuk.destroy', $res->contact_id) }}"
                                                         method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')

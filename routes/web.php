@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\CMS\AboutController as CMSAboutController;
 use App\Http\Controllers\Backend\CMS\DashboardController as CMSDashboardController;
 use App\Http\Controllers\Backend\CMS\GalleryController as CMSGalleryController;
 use App\Http\Controllers\Backend\CMS\Informasi\KBLIController as CMSKBLIController;
+use App\Http\Controllers\Backend\CMS\Informasi\KontakMasukController as CMSKontakMasukController;
 use App\Http\Controllers\Backend\CMS\KlienController as CMSKlienController;
 use App\Http\Controllers\Backend\CMS\SNKController as CMSSNKController;
 use App\Http\Controllers\Frontend\AboutController;
@@ -40,7 +41,9 @@ Route::namespace('Frontend')->group(function () {
         Route::get('kbli', [InformasiController::class, 'kbli'])->name('kbli');
         Route::get('cek-zonasi', [InformasiController::class, 'cek_zonasi'])->name('cek-zonasi');
         Route::get('karir', [InformasiController::class, 'notFound'])->name('karir');
+
         Route::get('hubungi-kami', [InformasiController::class, 'hubungi_kami'])->name('hubungi-kami');
+        Route::post('hubungi-kami', [InformasiController::class, 'hubungi_kami_store'])->name('hubungi-kami.store');
     });
 });
 
@@ -85,4 +88,7 @@ Route::prefix('cms')->namespace('Backend\CMS')->group(function () {
 
     Route::get('kbli', [CMSKBLIController::class, 'index'])->name('cms.kbli');
     Route::put('kbli/update', [CMSKBLIController::class, 'update'])->name('cms.kbli.update');
+
+    Route::get('kontak-masuk', [CMSKontakMasukController::class, 'index'])->name('cms.kontak-masuk');
+    Route::delete('kontak-masuk/{id}', [CMSKontakMasukController::class, 'destroy'])->name('cms.kontak-masuk.destroy');
 });

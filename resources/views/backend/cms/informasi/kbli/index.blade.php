@@ -2,7 +2,19 @@
 @section('content')
     <div class="content-wrapper">
         <div class="content-header">
-            <!-- Content header -->
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ $pages }}</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ route('cms.dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">{{ $pages }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="content">
@@ -23,6 +35,13 @@
                                 @method('PUT') <!-- Menggunakan method PUT untuk update -->
 
                                 <div class="card-body">
+                                    <!-- Jika ada pesan sukses, tampilkan -->
+                                    @if (session('success'))
+                                        <div id="success-alert" class="alert alert-success">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+
                                     <div class="form-group row">
                                         <label for="sampul" class="col-sm-2 col-form-label">Sampul</label>
                                         <div class="col-sm-10">

@@ -19,7 +19,7 @@
 <link href="{{ asset('assets/css/variables.css') }}" rel="stylesheet" />
 <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" />
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.min.js') }}" defer></script>
+<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
 
 <!-- SEO Meta Tags -->
 <meta name="robots" content="index, follow" />
@@ -58,6 +58,11 @@
         font-size: 30px;
         box-shadow: 2px 2px 3px #999;
         z-index: 100;
+    }
+
+    .float:hover {
+        background-color: #FFF;
+        color: #25d366;
     }
 
     .my-float {

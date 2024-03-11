@@ -8,3 +8,18 @@
 
 <!-- Template Main JS File -->
 <script src="{{ asset('assets/js/main.js') }}" defer></script>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $('#success-alert').fadeOut('slow', function() {
+                $(this).remove();
+            });
+        }, 3000); // Hilangkan pesan sukses setelah 3 detik
+
+        setTimeout(function() {
+            $('#success-danger').fadeOut('slow', function() {
+                $(this).remove();
+            });
+        }, 3000); // Hilangkan pesan sukses setelah 3 detik
+    });
+</script>

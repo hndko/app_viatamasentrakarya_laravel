@@ -92,7 +92,8 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>KBLI</p>
                             </a>
-                            <a href="" class="nav-link">
+                            <a href="{{ route('cms.kontak-masuk') }}"
+                                class="nav-link {{ $pages === 'Kontak Masuk' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Kotak Masuk</p>
                             </a>

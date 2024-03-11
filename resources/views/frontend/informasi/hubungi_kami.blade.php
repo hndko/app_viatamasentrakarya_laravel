@@ -25,8 +25,6 @@
                                 <div>
                                     <h4>Email:</h4>
                                     <p>
-                                        <!-- ptviatamasentrakarya@gmail.com <br>
-                                                        idealbusinessjakarta@gmail.com -->
                                         admin@viatama.co.id <br>
                                         cs@viatama.co.id
                                     </p>
@@ -47,30 +45,42 @@
                     </div>
 
                     <div class="col-lg-7">
-                        <form action="" method="post" role="form" class="php-email-form">
+                        <form action="{{ route('hubungi-kami.store') }}" method="post" role="form" class="php-form">
+                            @if ($errors->any())
+                                <div class="alert alert-danger" id="success-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            @if (session('success'))
+                                <div class="alert alert-success" id="success-alert">
+                                    {{ session('success') }}
+                                </div>
+                            @endif
+
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required />
+                                        placeholder="Your Name" required value="{{ old('name') }}" autocomplete="off"
+                                        required>
                                 </div>
                                 <div class="col-md-6 form-group mt-3 mt-md-0">
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required />
+                                        placeholder="Your Email" required value="{{ old('email') }}" autocomplete="off"
+                                        required>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
                                 <input type="text" class="form-control" name="subject" id="subject"
-                                    placeholder="Subject" required />
+                                    placeholder="Subject" required value="{{ old('subject') }}" autocomplete="off" required>
                             </div>
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="message" placeholder="Message" required></textarea>
-                            </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">
-                                    Your message has been sent. Thank you!
-                                </div>
+                                <textarea class="form-control" name="message" placeholder="Message" required>{{ old('message') }}</textarea>
                             </div>
                             <div class="text-center">
                                 <button type="submit">Send Message</button>
