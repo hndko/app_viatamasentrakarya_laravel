@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\LayananModel;
+use App\Models\PerusahaanModel;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class FormVOModel extends Model
 {
@@ -16,7 +18,6 @@ class FormVOModel extends Model
         'perusahaan_id',
         'no_invoice',
         'layanan_id',
-        'tahun',
         'harga',
         'ppn',
         'pph_23',
@@ -27,7 +28,6 @@ class FormVOModel extends Model
         'bukti_pembayaran',
         'bupot',
         'note',
-        'user_id',
     ];
 
     protected $casts = [
@@ -35,4 +35,14 @@ class FormVOModel extends Model
         'akhir_sewa' => 'date',
         'tgl_pembayaran' => 'date',
     ];
+
+    public function perusahaan()
+    {
+        return $this->belongsTo(PerusahaanModel::class, 'perusahaan_id', 'perusahaan_id');
+    }
+
+    public function layanan()
+    {
+        return $this->belongsTo(LayananModel::class, 'layanan_id', 'layanan_id');
+    }
 }

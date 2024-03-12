@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="{{ route('cms.dashboard') }}" class="brand-link">
+    <a href="{{ route('apps.dashboard') }}" class="brand-link">
         <img src="{{ asset('assets/img/favicon.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
             style="opacity: .8">
         <span class="brand-text font-weight-light">Viatama Sentrakarya</span>
@@ -21,9 +21,72 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('apps.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
                         <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="nav-item {{ $master === 'Master Data' ? 'show menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ $master === 'Master Data' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-th-list"></i>
+                        <p>
+                            Master Data
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('apps.daftar_perusahaan') }}"
+                                class="nav-link {{ $pages === 'Daftar Perusahaan' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Daftar Perusahaan</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('apps.virtual_office') }}"
+                        class="nav-link {{ $pages === 'Virtual Office' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-laptop-house"></i>
+                        <p>Virtual Office</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('apps.pendirian_perusahaan') }}"
+                        class="nav-link {{ $pages === 'Pendirian Perusahaan' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-building"></i>
+                        <p>Pendirian Perusahaan</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('apps.space_office') }}"
+                        class="nav-link {{ $pages === 'Space Office' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-ellipsis-h"></i>
+                        <p>Space Office</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-people-arrows"></i>
+                        <p>Vendor</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>HR GA</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-funnel-dollar"></i>
+                        <p>Kas Kecil & Besar</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-sign-out-alt"></i>
+                        <p>Logout</p>
                     </a>
                 </li>
             </ul>

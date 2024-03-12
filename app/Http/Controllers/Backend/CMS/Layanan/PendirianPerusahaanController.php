@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Backend\CMS\Layanan;
 
-use App\Http\Controllers\Controller;
-use App\Models\DeskripsiLayananModel;
 use App\Models\LayananModel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\DeskripsiLayananModel;
 
-class VirtualOfficeController extends Controller
+class PendirianPerusahaanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,11 +17,11 @@ class VirtualOfficeController extends Controller
         $data = [
             'title' => 'Content Management System | PT Viatama Sentrakarya',
             'master' => 'Layanan',
-            'pages' => 'Virtual Office',
-            'result' => LayananModel::where('tipe', 'Virtual Office')->get(), // Mengambil semua data klien dari database
+            'pages' => 'Pendirian Perusahaan',
+            'result' => LayananModel::where('tipe', 'Pendirian Perusahaan')->get(),
         ];
 
-        return view('backend.cms.layanan.virtual_office.index', $data);
+        return view('backend.cms.layanan.pendirian_perusahaan.index', $data);
     }
 
     /**
@@ -32,10 +32,10 @@ class VirtualOfficeController extends Controller
         $data = [
             'title' => 'Content Management System | PT Viatama Sentrakarya',
             'master' => 'Layanan',
-            'pages' => 'Virtual Office',
+            'pages' => 'Pendirian Perusahaan',
         ];
 
-        return view('backend.cms.layanan.virtual_office.create', $data);
+        return view('backend.cms.layanan.pendirian_perusahaan.create', $data);
     }
 
     /**
@@ -52,15 +52,15 @@ class VirtualOfficeController extends Controller
             'is_active' => 'nullable|boolean',
         ]);
 
-        // Tambahkan field 'tipe' dengan nilai default "Virtual Office"
+        // Tambahkan field 'tipe' dengan nilai default "Pendirian Perusahaan"
         $data = $request->all();
-        $data['tipe'] = 'Virtual Office';
+        $data['tipe'] = 'Pendirian Perusahaan';
 
         LayananModel::create($data);
 
 
-        return redirect()->route('cms.virtual_office')
-            ->with('success', 'Data Virtual Office berhasil ditambahkan.');
+        return redirect()->route('cms.pendirian_perusahaan')
+            ->with('success', 'Data Pendirian Perusahaan berhasil ditambahkan.');
     }
 
     /**
@@ -80,11 +80,11 @@ class VirtualOfficeController extends Controller
         $data = [
             'title' => 'Content Management System | PT Viatama Sentrakarya',
             'master' => 'Layanan',
-            'pages' => 'Virtual Office',
+            'pages' => 'Pendirian Perusahaan',
             'res' => $layanan,
         ];
 
-        return view('backend.cms.layanan.virtual_office.edit', $data);
+        return view('backend.cms.layanan.pendirian_perusahaan.edit', $data);
     }
 
     /**
@@ -111,7 +111,7 @@ class VirtualOfficeController extends Controller
             'is_active' => $request->is_active,
         ]);
 
-        return redirect()->route('cms.virtual_office')->with('success', 'Data Virtual Office berhasil diperbarui.');
+        return redirect()->route('cms.pendirian_perusahaan')->with('success', 'Data Pendirian Perusahaan berhasil diperbarui.');
     }
 
     /**
@@ -122,7 +122,7 @@ class VirtualOfficeController extends Controller
         $layanan = LayananModel::findOrFail($id);
         $layanan->delete();
 
-        return redirect()->route('cms.virtual_office')->with('success', 'Data Virtual Office berhasil dihapus.');
+        return redirect()->route('cms.pendirian_perusahaan')->with('success', 'Data Pendirian Perusahaan berhasil dihapus.');
     }
 
     /**
@@ -136,12 +136,12 @@ class VirtualOfficeController extends Controller
         $data = [
             'title' => 'Content Management System | PT Viatama Sentrakarya',
             'master' => 'Layanan',
-            'pages' => 'Virtual Office',
+            'pages' => 'Pendirian Perusahaan',
             'layanan' => $layanan,
             'result' => $deskripsi,
         ];
 
-        return view('backend.cms.layanan.virtual_office.deskripsi.list', $data);
+        return view('backend.cms.layanan.pendirian_perusahaan.deskripsi.list', $data);
     }
 
     public function list_store(Request $request, string $id)
@@ -155,7 +155,7 @@ class VirtualOfficeController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('cms.virtual_office.list', ['id' => $id])
+        return redirect()->route('cms.pendirian_perusahaan.list', ['id' => $id])
             ->with('success', 'Data Deskripsi Layanan berhasil ditambahkan.');
     }
 
@@ -170,7 +170,7 @@ class VirtualOfficeController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('cms.virtual_office.list', ['id' => $deskripsi->layanan_id])
+        return redirect()->route('cms.pendirian_perusahaan.list', ['id' => $deskripsi->layanan_id])
             ->with('success', 'Data Deskripsi Layanan berhasil diperbarui.');
     }
 
@@ -181,6 +181,6 @@ class VirtualOfficeController extends Controller
 
         $deskripsi->delete();
 
-        return redirect()->route('cms.virtual_office.list', ['id' => $layananId])->with('success', 'Data Deskripsi Layanan berhasil dihapus.');
+        return redirect()->route('cms.pendirian_perusahaan.list', ['id' => $layananId])->with('success', 'Data Deskripsi Layanan berhasil dihapus.');
     }
 }

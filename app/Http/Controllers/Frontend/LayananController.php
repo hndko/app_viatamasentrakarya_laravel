@@ -12,7 +12,8 @@ class LayananController extends Controller
     {
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
-            'pages' => 'Pendirian Perusahaan'
+            'pages' => 'Pendirian Perusahaan',
+            'result' => LayananModel::with('deskripsi_layanan')->where('tipe', 'Pendirian Perusahaan')->get(),
         ];
 
         return view('frontend.layanan.pendirian_perusahaan', $data);

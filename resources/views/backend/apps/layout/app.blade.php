@@ -2,18 +2,18 @@
 <html lang="en">
 
 <head>
-    @include('backend.cms.layout.head')
+    @include('backend.apps.layout.head')
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        @include('backend.cms.layout.navbar')
-        @include('backend.cms.layout.sidebar')
+        @include('backend.apps.layout.navbar')
+        @include('backend.apps.layout.sidebar')
         @yield('content')
-        @include('backend.cms.layout.footer')
+        @include('backend.apps.layout.footer')
     </div>
 
-    @include('backend.cms.layout.javascript')
+    @include('backend.apps.layout.javascript')
 </body>
 
 </html>

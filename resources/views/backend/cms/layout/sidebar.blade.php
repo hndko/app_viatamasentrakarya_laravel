@@ -62,7 +62,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="" class="nav-link">
+                            <a href="{{ route('cms.pendirian_perusahaan') }}"
+                                class="nav-link {{ $pages === 'Pendirian Perusahaan' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pendirian Perusahaan</p>
                             </a>
