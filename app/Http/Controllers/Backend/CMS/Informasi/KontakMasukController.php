@@ -14,7 +14,7 @@ class KontakMasukController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
+            'title' => 'Content Management System | PT Viatama Sentrakarya',
             'master' => 'Informasi',
             'pages' => 'Kontak Masuk',
             'result' => ContactUsModel::latest()->get()

@@ -1,0 +1,95 @@
+@extends('backend.cms.layout.app')
+@section('content')
+    <div class="content-wrapper">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">{{ $pages }}</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="{{ route('cms.dashboard') }}">Home</a></li>
+                            <li class="breadcrumb-item active">{{ $pages }}</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card card-primary card-outline">
+                            <div class="card-header">
+                                <span class="m-0 h5">Daftar {{ $pages }}</span>
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-primary btn-sm"
+                                        onclick="window.location.href='{{ route('cms.virtual_office.create') }}'">Tambah
+                                        Data</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <!-- Jika ada pesan sukses, tampilkan -->
+                                @if (session('success'))
+                                    <div id="success-alert" class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                <table id="example2" class="table table-bordered table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Judul</th>
+                                            <th>Harga</th>
+                                            <th>Color</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($result as $res)
+                                            <tr>
+                                                <td class="align-middle">{{ $loop->iteration }}</td>
+                                                <td class="align-middle">{{ $res->judul }}</td>
+                                                <td class="align-middle">Rp{{ number_format($res->harga, 0, ',', '.') }}
+                                                </td>
+                                                <td class="align-middle">{{ $res->is_color }}</td>
+                                                <td class="align-middle">
+                                                    <!-- Tombol untuk mengedit -->
+                                                    <button type="button" class="btn btn-warning btn-sm"
+                                                        onclick="window.location.href='{{ route('cms.virtual_office.edit', $res->layanan_id) }}'">
+                                                        <i class="fas fa-edit"></i>
+                                                    </button>
+
+                                                    <!-- Tombol untuk menghapus -->
+                                                    <form
+                                                        action="{{ route('cms.virtual_office.destroy', $res->layanan_id) }}"
+                                                        method="POST" style="display: inline;">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?');">
+                                                            <i class="fas fa-trash"></i>
+                                                        </button>
+                                                    </form>
+
+                                                    <!-- Tombol untuk add dekripsi -->
+                                                    <button type="button" class="btn btn-info btn-sm"
+                                                        onclick="window.location.href='{{ route('cms.virtual_office.list', $res->layanan_id) }}'">
+                                                        <i class="fas fa-list"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

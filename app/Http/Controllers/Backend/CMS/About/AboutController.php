@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Backend\CMS;
+namespace App\Http\Controllers\Backend\CMS\About;
 
 use App\Http\Controllers\Controller;
 use App\Models\AboutModel;
@@ -14,7 +14,7 @@ class AboutController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
+            'title' => 'Content Management System | PT Viatama Sentrakarya',
             'master' => null,
             'pages' => 'Tentang Kami',
             'res' => AboutModel::first()

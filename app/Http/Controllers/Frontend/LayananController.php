@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\LayananModel;
+use App\Http\Controllers\Controller;
 
 class LayananController extends Controller
 {
@@ -26,7 +27,8 @@ class LayananController extends Controller
     {
         $data = [
             'title' => 'PT Viatama Sentrakarya - Virtual Office & Layanan Bisnis',
-            'pages' => 'Virtual Office'
+            'pages' => 'Virtual Office',
+            'result' => LayananModel::with('deskripsi_layanan')->where('tipe', 'Virtual Office')->get(),
         ];
 
         return view('frontend.layanan.virtual_office', $data);

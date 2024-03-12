@@ -16,6 +16,8 @@
 <script src="{{ asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- bs-custom-file-input -->
 <script src="{{ asset('assets/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+<!-- Bootstrap Switch -->
+<script src="{{ asset('assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('assets/dist/js/adminlte.min.js') }}"></script>
 <!-- Page specific script -->
@@ -41,6 +43,10 @@
     // Custom Choose File
     $(function() {
         bsCustomFileInput.init();
+
+        $("input[data-bootstrap-switch]").each(function() {
+            $(this).bootstrapSwitch('state', $(this).prop('checked'));
+        })
     });
 </script>
 <script>

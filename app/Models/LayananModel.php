@@ -9,7 +9,6 @@ class LayananModel extends Model
 {
     use HasFactory;
     protected $table = 'tb_layanan';
-
     protected $primaryKey = 'layanan_id';
 
     protected $fillable = [
@@ -27,4 +26,10 @@ class LayananModel extends Model
         'is_whatsapp' => 'boolean',
         'is_active' => 'boolean',
     ];
+
+    // Define the relationship to DeskripsiLayananModel
+    public function deskripsi_layanan()
+    {
+        return $this->hasMany(DeskripsiLayananModel::class, 'layanan_id');
+    }
 }

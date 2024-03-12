@@ -52,8 +52,8 @@
                         <p>Syarat & Ketentuan</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                <li class="nav-item {{ $master === 'Layanan' ? 'show menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ $master === 'Layanan' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-book"></i>
                         <p>
                             Layanan
@@ -66,11 +66,13 @@
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pendirian Perusahaan</p>
                             </a>
-                            <a href="" class="nav-link">
+                            <a href="{{ route('cms.virtual_office') }}"
+                                class="nav-link {{ $pages === 'Virtual Office' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Virtual Office</p>
                             </a>
-                            <a href="" class="nav-link">
+                            <a href="{{ route('cms.space_office') }}"
+                                class="nav-link {{ $pages === 'Space Office' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Space Office</p>
                             </a>

@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend\CMS\Informasi;
+namespace App\Http\Controllers\Backend\CMS\Layanan;
 
-use App\Models\KBLIModel;
+use App\Models\SpaceOfficeModel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 
-class KBLIController extends Controller
+class SpaceOfficeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +16,13 @@ class KBLIController extends Controller
     {
         $data = [
             'title' => 'Content Management System | PT Viatama Sentrakarya',
-            'master' => 'Informasi',
-            'pages' => 'KBLI Terbaru',
-            'res' => KBLIModel::first()
+            'master' => 'Layanan',
+            'pages' => 'Space Office',
+            'res' => SpaceOfficeModel::first()
         ];
 
-        return view('backend.cms.informasi.kbli.index', $data);
+        return view('backend.cms.layanan.space_office.index', $data);
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -63,20 +62,22 @@ class KBLIController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'sampul' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'judul' => 'required|string|max:100',
             'deskripsi' => 'required|string',
-            'file_uploaded' => 'nullable|mimes:pdf|max:5120',
+            'sampul' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Ambil data kbli dari basis data
-        $kbli = KBLIModel::first();
+        $space_office = SpaceOfficeModel::first();
+
+        $space_office->judul = $request->judul;
+        $space_office->deskripsi = $request->deskripsi;
 
         // Gunakan gambar lama jika gambar baru kosong
         if ($request->hasFile('sampul')) {
             // Hapus gambar lama jika tersedia
-            if (!empty($kbli->sampul)) {
-                $imagePath = public_path('assets/img/' . $kbli->sampul);
+            if (!empty($space_office->sampul)) {
+                $imagePath = public_path('assets/img/' . $space_office->sampul);
                 if (File::exists($imagePath)) {
                     File::delete($imagePath);
                 }
@@ -85,32 +86,13 @@ class KBLIController extends Controller
             // Upload gambar baru
             $imageName = time() . '.' . $request->sampul->extension();
             $request->sampul->move(public_path('assets/img'), $imageName);
-            $kbli->sampul = $imageName;
-        }
-
-        $kbli->judul = $request->judul;
-        $kbli->deskripsi = $request->deskripsi;
-
-        // Gunakan file lama jika file baru kosong
-        if ($request->hasFile('file_uploaded')) {
-            // Hapus file lama jika tersedia
-            if (!empty($kbli->file_uploaded)) {
-                $filePath = public_path('assets/berkas/' . $kbli->file_uploaded);
-                if (File::exists($filePath)) {
-                    File::delete($filePath);
-                }
-            }
-
-            // Upload file baru
-            $fileName = time() . '.' . $request->file_uploaded->extension();
-            $request->file_uploaded->move(public_path('assets/berkas'), $fileName);
-            $kbli->file_uploaded = $fileName;
+            $space_office->sampul = $imageName;
         }
 
         // Update data kbli
-        $kbli->save();
+        $space_office->save();
 
-        return redirect()->route('cms.kbli')->with('success', 'Data kbli berhasil diperbarui.');
+        return redirect()->route('cms.space_office')->with('success', 'Data space office berhasil diperbarui.');
     }
 
     /**
