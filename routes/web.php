@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\APPS\DashboardController as APPSDashboardContro
 use App\Http\Controllers\Backend\APPS\MasterData\DaftarPerusahaanController as APPSDaftarPerusahaanController;
 use App\Http\Controllers\Backend\APPS\PendirianPerusahaanController as APPSPendirianPerusahaanController;
 use App\Http\Controllers\Backend\APPS\SpaceOfficeController as APPSSpaceOfficeController;
+use App\Http\Controllers\Backend\APPS\VendorController as APPSVendorController;
 use App\Http\Controllers\Backend\APPS\VirtualOfficeController as APPSVirtualOfficeController;
 use App\Http\Controllers\Backend\CMS\About\GalleryController as CMSGalleryController;
 use App\Http\Controllers\Backend\CMS\Layanan\SpaceOfficeController as CMSSpaceOfficeController;
@@ -94,6 +95,13 @@ Route::prefix('apps')->namespace('Backend\APPS')->group(function () {
     Route::get('space_office/{id}/edit', [APPSSpaceOfficeController::class, 'edit'])->name('apps.space_office.edit');
     Route::put('space_office/{id}/update', [APPSSpaceOfficeController::class, 'update'])->name('apps.space_office.update');
     Route::delete('space_office/{id}', [APPSSpaceOfficeController::class, 'destroy'])->name('apps.space_office.destroy');
+
+    Route::get('vendor', [APPSVendorController::class, 'index'])->name('apps.vendor');
+    Route::get('vendor/create', [APPSVendorController::class, 'create'])->name('apps.vendor.create');
+    Route::post('vendor', [APPSVendorController::class, 'store'])->name('apps.vendor.store');
+    Route::get('vendor/{id}/edit', [APPSVendorController::class, 'edit'])->name('apps.vendor.edit');
+    Route::put('vendor/{id}/update', [APPSVendorController::class, 'update'])->name('apps.vendor.update');
+    Route::delete('vendor/{id}', [APPSVendorController::class, 'destroy'])->name('apps.vendor.destroy');
 });
 
 

@@ -36,7 +36,6 @@ class SpaceOfficeController extends Controller
             'master' => null,
             'pages' => 'Space Office',
             'perusahaan' => PerusahaanModel::all(),
-            'layanan' => LayananModel::all()
         ];
 
         return view('backend.apps.space_office.create', $data);

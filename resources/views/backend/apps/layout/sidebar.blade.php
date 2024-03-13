@@ -66,7 +66,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('apps.vendor') }}" class="nav-link {{ $pages === 'Vendor' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-people-arrows"></i>
                         <p>Vendor</p>
                     </a>
