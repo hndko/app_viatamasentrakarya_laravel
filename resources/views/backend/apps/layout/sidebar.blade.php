@@ -12,9 +12,15 @@
                 <img src="{{ asset('assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2"
                     alt="User Image">
             </div>
-            <div class="info">
-                <a href="#" class="d-block">Administrator</a>
-            </div>
+            @if (Auth::check())
+                <div class="info">
+                    <a href="#" class="d-block">{{ Auth::user()->nama_lengkap }}</a>
+                </div>
+            @else
+                <div class="info">
+                    <a href="#" class="d-block">Administrator</a>
+                </div>
+            @endif
         </div>
 
         <nav class="mt-2">
@@ -85,10 +91,21 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('apps.data_akun') }}"
+                        class="nav-link {{ $pages === 'Data Akun' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>Data Akun</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('logout') }}" class="nav-link"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>Logout</p>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
             </ul>
         </nav>
