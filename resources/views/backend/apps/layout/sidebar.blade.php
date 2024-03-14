@@ -72,7 +72,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('apps.hrga') }}" class="nav-link {{ $pages === 'HR & GA' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>HR GA</p>
                     </a>

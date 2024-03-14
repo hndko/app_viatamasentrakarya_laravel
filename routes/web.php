@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\CMS\About\AboutController as CMSAboutController
 use App\Http\Controllers\Backend\CMS\DashboardController as CMSDashboardController;
 use App\Http\Controllers\Backend\CMS\Informasi\KBLIController as CMSKBLIController;
 use App\Http\Controllers\Backend\APPS\DashboardController as APPSDashboardController;
+use App\Http\Controllers\Backend\APPS\HrGaController as APPSHrGaController;
 use App\Http\Controllers\Backend\APPS\MasterData\DaftarPerusahaanController as APPSDaftarPerusahaanController;
 use App\Http\Controllers\Backend\APPS\PendirianPerusahaanController as APPSPendirianPerusahaanController;
 use App\Http\Controllers\Backend\APPS\SpaceOfficeController as APPSSpaceOfficeController;
@@ -102,6 +103,13 @@ Route::prefix('apps')->namespace('Backend\APPS')->group(function () {
     Route::get('vendor/{id}/edit', [APPSVendorController::class, 'edit'])->name('apps.vendor.edit');
     Route::put('vendor/{id}/update', [APPSVendorController::class, 'update'])->name('apps.vendor.update');
     Route::delete('vendor/{id}', [APPSVendorController::class, 'destroy'])->name('apps.vendor.destroy');
+
+    Route::get('hrga', [APPSHrGaController::class, 'index'])->name('apps.hrga');
+    Route::get('hrga/create', [APPSHrGaController::class, 'create'])->name('apps.hrga.create');
+    Route::post('hrga', [APPSHrGaController::class, 'store'])->name('apps.hrga.store');
+    Route::get('hrga/{id}/edit', [APPSHrGaController::class, 'edit'])->name('apps.hrga.edit');
+    Route::put('hrga/{id}/update', [APPSHrGaController::class, 'update'])->name('apps.hrga.update');
+    Route::delete('hrga/{id}', [APPSHrGaController::class, 'destroy'])->name('apps.hrga.destroy');
 });
 
 
