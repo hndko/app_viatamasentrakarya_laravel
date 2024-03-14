@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CMS\DashboardController as CMSDashboardControll
 use App\Http\Controllers\Backend\CMS\Informasi\KBLIController as CMSKBLIController;
 use App\Http\Controllers\Backend\APPS\DashboardController as APPSDashboardController;
 use App\Http\Controllers\Backend\APPS\HrGaController as APPSHrGaController;
+use App\Http\Controllers\Backend\APPS\KasController as APPSKasController;
 use App\Http\Controllers\Backend\APPS\MasterData\DaftarPerusahaanController as APPSDaftarPerusahaanController;
 use App\Http\Controllers\Backend\APPS\PendirianPerusahaanController as APPSPendirianPerusahaanController;
 use App\Http\Controllers\Backend\APPS\SpaceOfficeController as APPSSpaceOfficeController;
@@ -110,6 +111,13 @@ Route::prefix('apps')->namespace('Backend\APPS')->group(function () {
     Route::get('hrga/{id}/edit', [APPSHrGaController::class, 'edit'])->name('apps.hrga.edit');
     Route::put('hrga/{id}/update', [APPSHrGaController::class, 'update'])->name('apps.hrga.update');
     Route::delete('hrga/{id}', [APPSHrGaController::class, 'destroy'])->name('apps.hrga.destroy');
+
+    Route::get('kas', [APPSKasController::class, 'index'])->name('apps.kas');
+    Route::get('kas/create', [APPSKasController::class, 'create'])->name('apps.kas.create');
+    Route::post('kas', [APPSKasController::class, 'store'])->name('apps.kas.store');
+    Route::get('kas/{id}/edit', [APPSKasController::class, 'edit'])->name('apps.kas.edit');
+    Route::put('kas/{id}/update', [APPSKasController::class, 'update'])->name('apps.kas.update');
+    Route::delete('kas/{id}', [APPSKasController::class, 'destroy'])->name('apps.kas.destroy');
 });
 
 

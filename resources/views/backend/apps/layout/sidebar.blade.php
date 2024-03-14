@@ -78,7 +78,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('apps.kas') }}"
+                        class="nav-link {{ $pages === 'Kas Kecil & Besar' ? 'active' : '' }}">
                         <i class="nav-icon fas fa-funnel-dollar"></i>
                         <p>Kas Kecil & Besar</p>
                     </a>
