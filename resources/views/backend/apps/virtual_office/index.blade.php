@@ -30,7 +30,7 @@
                                         Data</button>
                                 </div>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body table-responsive">
                                 <!-- Jika ada pesan sukses, tampilkan -->
                                 @if (session('success'))
                                     <div id="success-alert" class="alert alert-success">

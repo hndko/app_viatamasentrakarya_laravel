@@ -1,0 +1,18 @@
+Data Akun :
+------------
+Email    : admin@gmail.com
+Password : viatama_admin1234
+Role	 : superadmin
+
+Email    : admin01@gmail.com
+Password : admin12345
+Role	 : admin 1
+
+Email    : admin02@gmail.com
+Password : admin12345
+Role	 : admin 2
+
+Email    : admincontent@gmail.com
+Password : admin1234
+Role	 : admin content
+
