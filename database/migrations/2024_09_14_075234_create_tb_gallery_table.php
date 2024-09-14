@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_snk', function (Blueprint $table) {
-            $table->increments('snk_id');
-            $table->text('deskripsi');
-            $table->timestamps(); // Kolom untuk created_at dan updated_at
+        Schema::create('tb_gallery', function (Blueprint $table) {
+            $table->increments('gallery_id');
+            $table->string('sampul', 150);
+            $table->timestamps();
         });
     }
 
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_snk');
+        Schema::dropIfExists('tb_gallery');
     }
 };

@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tb_kbli', function (Blueprint $table) {
-            $table->increments('kbli_id');
+        Schema::create('tb_client', function (Blueprint $table) {
+            $table->id('client_id');
+            $table->string('nama_klien', 155);
             $table->string('sampul', 150);
-            $table->string('judul', 100);
-            $table->text('deskripsi');
-            $table->string('file_uploaded', 150);
-            $table->timestamps(); // Kolom untuk created_at dan updated_at
+            $table->timestamps();
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_kbli');
+        Schema::dropIfExists('tb_client');
     }
 };

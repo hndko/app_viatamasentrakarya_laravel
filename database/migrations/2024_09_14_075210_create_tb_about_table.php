@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tb_vendor', function (Blueprint $table) {
-            $table->bigInteger('pph_21')->nullable()->change();
+        Schema::create('tb_about', function (Blueprint $table) {
+            $table->increments('about_id');
+            $table->text('deskripsi');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tb_vendor', function (Blueprint $table) {
-            $table->bigInteger('pph_21')->nullable(false)->change();
-        });
+        Schema::dropIfExists('tb_about');
     }
 };

@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tb_form_vo', function (Blueprint $table) {
-            // Hapus kolom tahun
-            $table->dropColumn('tahun');
+        Schema::create('tb_kbli', function (Blueprint $table) {
+            $table->increments('kbli_id');
+            $table->string('sampul', 150);
+            $table->string('judul', 100);
+            $table->text('deskripsi');
+            $table->string('file_uploaded', 150);
+            $table->timestamps();
         });
     }
 
@@ -22,9 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tb_form_vo', function (Blueprint $table) {
-            // Tambahkan kembali kolom tahun
-            $table->integer('tahun');
-        });
+        Schema::dropIfExists('tb_kbli');
     }
 };

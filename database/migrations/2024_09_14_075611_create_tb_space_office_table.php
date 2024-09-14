@@ -11,9 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('tb_form_vo', function (Blueprint $table) {
-            // Hapus kolom user_id
-            $table->dropColumn('user_id');
+        Schema::create('tb_space_office', function (Blueprint $table) {
+            $table->increments('space_office_id');
+            $table->string('judul', 100);
+            $table->text('deskripsi');
+            $table->string('sampul', 150);
+            $table->timestamps();
         });
     }
 
@@ -22,9 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('tb_form_vo', function (Blueprint $table) {
-            // Tambahkan kembali kolom user_id
-            $table->bigInteger('user_id')->default('1');
-        });
+        Schema::dropIfExists('tb_space_office');
     }
 };

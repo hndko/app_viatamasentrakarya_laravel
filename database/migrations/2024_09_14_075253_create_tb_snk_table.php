@@ -11,7 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::rename('tb_layanan_vo', 'tb_layanan');
+        Schema::create('tb_snk', function (Blueprint $table) {
+            $table->increments('snk_id');
+            $table->text('deskripsi');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -19,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::rename('tb_layanan', 'tb_layanan_vo');
+        Schema::dropIfExists('tb_snk');
     }
 };

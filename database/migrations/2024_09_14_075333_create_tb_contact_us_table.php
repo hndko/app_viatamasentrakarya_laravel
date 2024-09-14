@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email', 150);
             $table->string('subject', 120);
             $table->text('message');
-            $table->timestamps(); // Tambahkan kolom created_at dan updated_at
+            $table->timestamps();
         });
     }
 

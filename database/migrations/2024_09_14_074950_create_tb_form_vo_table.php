@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_form_vo', function (Blueprint $table) {
-            $table->id('form_vo_id');
             $table->unsignedBigInteger('perusahaan_id');
             $table->text('no_invoice')->nullable();
             $table->unsignedBigInteger('layanan_id');
@@ -23,12 +22,11 @@ return new class extends Migration
             $table->date('awal_sewa');
             $table->date('akhir_sewa');
             $table->date('tgl_pembayaran')->nullable();
-            $table->string('metode_pembayaran', 50);
+            $table->string('metode_pembayaran', 50)->nullable();
             $table->string('bukti_pembayaran', 155)->nullable();
             $table->string('bupot', 70)->nullable();
             $table->text('note')->nullable();
-            $table->unsignedBigInteger('user_id')->default(1);
-            $table->timestamps(); // Created_at and updated_at columns
+            $table->timestamps();
         });
     }
 

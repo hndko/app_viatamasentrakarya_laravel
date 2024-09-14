@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('no_invoice');
             $table->bigInteger('harga')->nullable();
             $table->bigInteger('ppn')->nullable();
-            $table->bigInteger('pph_21');
+            $table->bigInteger('pph_21')->nullable();
             $table->string('bukti_potong', 159)->nullable();
             $table->timestamps();
         });

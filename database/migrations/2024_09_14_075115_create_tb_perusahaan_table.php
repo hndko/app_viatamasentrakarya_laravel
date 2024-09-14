@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama_pic', 155)->nullable();
             $table->string('jabatan', 70)->nullable();
             $table->string('no_pic', 30)->nullable();
-            $table->timestamps(); // Created_at and updated_at columns
+            $table->timestamps();
         });
     }
 

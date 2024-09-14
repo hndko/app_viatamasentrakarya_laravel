@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('is_whatsapp', ['1', '0'])->default('1');
             $table->string('is_color', 30);
             $table->enum('is_active', ['0', '1'])->default('1');
-            $table->timestamps(); // Created_at and updated_at columns
+            $table->timestamps();
         });
     }
 
