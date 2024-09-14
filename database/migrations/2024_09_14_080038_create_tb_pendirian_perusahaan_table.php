@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_pendirian_perusahaan', function (Blueprint $table) {
             $table->id('pendirian_perusahaan_id');
+            $table->unsignedBigInteger('perusahaan_id');
             $table->text('no_invoice');
             $table->bigInteger('harga');
             $table->string('estiminasi_pekerjaan', 50);

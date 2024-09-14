@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tb_form_vo', function (Blueprint $table) {
+            $table->id('form_vo_id');
             $table->unsignedBigInteger('perusahaan_id');
             $table->text('no_invoice')->nullable();
             $table->unsignedBigInteger('layanan_id');

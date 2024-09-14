@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('layanan_id');
             $table->string('tipe', 100);
             $table->string('judul', 150);
-            $table->string('harga', 30);
+            $table->bigInteger('harga'); // Mengubah tipe data kolom harga menjadi bigInteger
             $table->enum('is_harga', ['1', '0'])->default('1');
             $table->enum('is_whatsapp', ['1', '0'])->default('1');
             $table->string('is_color', 30);
