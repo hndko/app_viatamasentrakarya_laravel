@@ -48,6 +48,13 @@
                                 <p>Daftar Perusahaan</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('apps.percen_pajak') }}"
+                                class="nav-link {{ $pages === 'Persen Pajak' ? 'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Persen Pajak</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item">

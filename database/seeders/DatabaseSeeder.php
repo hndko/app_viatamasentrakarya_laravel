@@ -19,6 +19,7 @@ use Database\Seeders\LayananSeeder;
 use Database\Seeders\ContactUsSeeder;
 use Database\Seeders\PerusahaanSeeder;
 use Database\Seeders\UsersTableSeeder;
+use Database\Seeders\PercenPajakSeeder;
 use Database\Seeders\SpaceOfficeSeeder;
 use Database\Seeders\DeskripsiLayananSeeder;
 use Database\Seeders\PendirianPerusahaanSeeder;
@@ -47,7 +48,8 @@ class DatabaseSeeder extends Seeder
             SnkSeeder::class,
             SpaceOfficeSeeder::class,
             VendorSeeder::class,
-            UsersTableSeeder::class
+            UsersTableSeeder::class,
+            PercenPajakSeeder::class,
         ]);
     }
 }

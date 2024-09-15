@@ -35,6 +35,9 @@
                                 @method('PUT')
 
                                 <div class="card-body">
+                                    <input type="hidden" id="ppn_rate" value="{{ $pajak->ppn }}">
+                                    <input type="hidden" id="pph_rate" value="{{ $pajak->pph }}">
+
                                     <div class="form-group row">
                                         <label for="perusahaan_id" class="col-sm-2 col-form-label">Pilih Perusahaan</label>
                                         <div class="col-sm-10">
@@ -195,8 +198,13 @@
                                     <div class="form-group row">
                                         <label for="bupot" class="col-sm-2 col-form-label">Bupot</label>
                                         <div class="col-sm-10">
-                                            <input type="number" class="form-control" name="bupot" id="bupot"
-                                                placeholder="Bupot" autocomplete="off" value="{{ $formVO->bupot }}">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="bupot"
+                                                        id="bupot">
+                                                    <label class="custom-file-label" for="bupot">Choose file</label>
+                                                </div>
+                                            </div>
                                             @error('bupot')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -236,11 +244,17 @@
                 var harga = selectedOption.data('harga');
                 // Update nilai input harga
                 $('#harga').val(harga);
+
+                // Ambil nilai PPN dan PPh dari hidden input
+                var ppnRate = parseFloat($('#ppn_rate').val()) / 100; // Convert to decimal
+                var pphRate = parseFloat($('#pph_rate').val()) / 100; // Convert to decimal
+
                 // Hitung dan set nilai PPn
-                var ppn = harga * 0.11;
+                var ppn = harga * ppnRate;
                 $('#ppn').val(ppn.toFixed(0));
+
                 // Hitung dan set nilai PPh 23
-                var pph23 = harga * 0.02;
+                var pph23 = harga * pphRate;
                 $('#pph_23').val(pph23.toFixed(0));
             });
         });

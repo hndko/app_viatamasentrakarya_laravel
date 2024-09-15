@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\APPS\DashboardController as APPSDashboardContro
 use App\Http\Controllers\Backend\APPS\HrGaController as APPSHrGaController;
 use App\Http\Controllers\Backend\APPS\KasController as APPSKasController;
 use App\Http\Controllers\Backend\APPS\MasterData\DaftarPerusahaanController as APPSDaftarPerusahaanController;
+use App\Http\Controllers\Backend\APPS\MasterData\PercenPajakController as APPSPercenPajakController;
 use App\Http\Controllers\Backend\APPS\PendirianPerusahaanController as APPSPendirianPerusahaanController;
 use App\Http\Controllers\Backend\APPS\SpaceOfficeController as APPSSpaceOfficeController;
 use App\Http\Controllers\Backend\APPS\UserController as APPSUserController;
@@ -83,13 +84,20 @@ Route::prefix('apps')->namespace('Backend\APPS')->group(function () {
     Route::middleware('check.role:superadmin,admin 1,admin 2')->group(function () {
         Route::get('dashboard', [APPSDashboardController::class, 'index'])->name('apps.dashboard');
 
-        Route::prefix('informasi')->namespace('Backend\APPS')->group(function () {
+        Route::prefix('master')->namespace('Backend\APPS')->group(function () {
             Route::get('daftar_perusahaan', [APPSDaftarPerusahaanController::class, 'index'])->name('apps.daftar_perusahaan');
             Route::get('daftar_perusahaan/create', [APPSDaftarPerusahaanController::class, 'create'])->name('apps.daftar_perusahaan.create');
             Route::post('daftar_perusahaan', [APPSDaftarPerusahaanController::class, 'store'])->name('apps.daftar_perusahaan.store');
             Route::get('daftar_perusahaan/{id}/edit', [APPSDaftarPerusahaanController::class, 'edit'])->name('apps.daftar_perusahaan.edit');
             Route::put('daftar_perusahaan/{id}/update', [APPSDaftarPerusahaanController::class, 'update'])->name('apps.daftar_perusahaan.update');
             Route::delete('daftar_perusahaan/{id}', [APPSDaftarPerusahaanController::class, 'destroy'])->name('apps.daftar_perusahaan.destroy');
+
+            Route::get('percen_pajak', [APPSPercenPajakController::class, 'index'])->name('apps.percen_pajak');
+            Route::get('percen_pajak/create', [APPSPercenPajakController::class, 'create'])->name('apps.percen_pajak.create');
+            Route::post('percen_pajak', [APPSPercenPajakController::class, 'store'])->name('apps.percen_pajak.store');
+            Route::get('percen_pajak/{id}/edit', [APPSPercenPajakController::class, 'edit'])->name('apps.percen_pajak.edit');
+            Route::put('percen_pajak/{id}/update', [APPSPercenPajakController::class, 'update'])->name('apps.percen_pajak.update');
+            Route::delete('percen_pajak/{id}', [APPSPercenPajakController::class, 'destroy'])->name('apps.percen_pajak.destroy');
         });
 
         Route::get('virtual_office', [APPSVirtualOfficeController::class, 'index'])->name('apps.virtual_office');
